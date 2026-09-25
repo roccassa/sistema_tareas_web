@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestor de Tareas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="encabezado">
+        <div class="logo">
+            <img src="img/checklist.svg" alt="icono de lista de tareas">
+            <h1>Gestor de Tareas</h1>
+        </div>
+
+        <nav class="navBar">
+            <a href="#inicio">Inicio</a>
+            <a href="#registro">Nueva tarea</a>
+            <a href="#tareas">Mis tareas</a>
+        </nav>
+    </header>
+
+    <main class="contenido">
+
+        <!-- presentacion y contadores -->
+        <section class="presentacion" id="inicio">
+            <h2>Organiza tus pendientes</h2>
+            <p>Registra tus tareas, márcalas cuando las termines y no olvides nada de lo que tienes que hacer.</p>
+
+            <ul class="lista_pasos">
+                <li>Registra una tarea con su fecha y prioridad.</li>
+                <li>Busca o filtra tus tareas.</li>
+                <li>Marca como completadas las que ya terminaste.</li>
+            </ul>
+
+            <div class="contadores">
+                <article class="contador">
+                    <p>Totales</p>
+                    <strong id="contador_total">0</strong>
+                </article>
+                <article class="contador">
+                    <p>Pendientes</p>
+                    <strong id="contador_pendientes">0</strong>
+                </article>
+                <article class="contador">
+                    <p>Completadas</p>
+                    <strong id="contador_completadas">0</strong>
+                </article>
+            </div>
+        </section>
+
+        <!-- formulario para registrar tareas -->
+        <section class="registro" id="registro">
+            <h2>Nueva tarea</h2>
+
+            <form id="form_tarea">
+                <div class="form-group">
+                    <label for="titulo">Título</label>
+                    <input type="text" id="titulo" placeholder="Ej. Pagar el recibo de luz" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="descripcion">Descripción</label>
+                    <textarea id="descripcion" rows="3" placeholder="Escribe los detalles de la tarea"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="fecha">Fecha límite</label>
+                    <input type="date" id="fecha" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="prioridad">Prioridad</label>
+                    <select id="prioridad" required>
+                        <option value="">Selecciona una opción</option>
+                        <option value="alta">Alta</option>
+                        <option value="media">Media</option>
+                        <option value="baja">Baja</option>
+                    </select>
+                </div>
+
+                <p class="mensaje_error" id="mensaje_error"></p>
+
+                <button type="button" id="btn_agregar" class="btn">Agregar tarea</button>
+            </form>
+        </section>
+
+        <!-- busqueda, filtros y lista de tareas -->
+        <section class="tareas" id="tareas">
+            <h2>Mis tareas</h2>
+
+            <div class="filtros">
+                <div class="form-group">
+                    <label for="buscar">Buscar</label>
+                    <input type="text" id="buscar" placeholder="Buscar por título">
+                </div>
+
+                <div class="form-group">
+                    <label for="filtro_estado">Estado</label>
+                    <select id="filtro_estado">
+                        <option value="todas">Todas</option>
+                        <option value="pendientes">Pendientes</option>
+                        <option value="completadas">Completadas</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="filtro_prioridad">Prioridad</label>
+                    <select id="filtro_prioridad">
+                        <option value="todas">Todas</option>
+                        <option value="alta">Alta</option>
+                        <option value="media">Media</option>
+                        <option value="baja">Baja</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- aqui se agregan las tarjetas de las tareas con JavaScript -->
+            <div class="lista_tareas" id="lista_tareas">
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <p>Todos los derechos reservados | 2026</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
