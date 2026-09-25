@@ -39,6 +39,13 @@ body{
 .navBar a{
     color: white;
     text-decoration: none;
+    padding: 6px 10px;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+}
+
+.navBar a:hover{
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
 /* contenido principal */
@@ -65,6 +72,180 @@ body{
     margin-left: 20px;
     margin-bottom: 24px;
     line-height: 1.8;
+}
+
+/* contadores */
+.contadores{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.contador{
+    padding: 20px;
+    border-radius: 12px;
+    background-color: white;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    text-align: center;
+}
+
+.contador p{
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.contador strong{
+    font-size: 36px;
+    color: rgb(94, 75, 15);
+}
+
+/* formulario de registro */
+.registro{
+    padding: 24px;
+    border-radius: 12px;
+    background-color: white;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+}
+
+.form-group label{
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+input, textarea, select{
+    padding: 10px 12px;
+    border-radius: 6px;
+    border: 1px solid #d1d5db;
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus, textarea:focus, select:focus{
+    border-color: rgb(94, 75, 15);
+    box-shadow: 0 0 0 3px rgba(94, 75, 15, 0.2);
+}
+
+.mensaje_error{
+    margin-bottom: 12px;
+    color: #b91c1c;
+    font-weight: bold;
+}
+
+/* botones */
+.btn{
+    padding: 10px 16px;
+    border: none;
+    border-radius: 6px;
+    background-color: rgb(94, 75, 15);
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn:hover{
+    background-color: rgb(63, 50, 10);
+}
+
+.btn:focus{
+    outline: 3px solid rgba(94, 75, 15, 0.4);
+}
+
+/* busqueda y filtros */
+.filtros{
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+/* lista de tareas */
+.lista_tareas{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.tarjeta_tarea{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+    border-radius: 12px;
+    background-color: white;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    transition: transform 0.2s ease;
+}
+
+.tarjeta_tarea:hover{
+    transform: translateY(-4px);
+}
+
+.descripcion_tarea{
+    line-height: 1.5;
+    color: #4b5563;
+}
+
+.fecha_tarea, .prioridad_tarea{
+    font-size: 14px;
+}
+
+.fecha_tarea span, .prioridad_tarea span{
+    font-weight: bold;
+}
+
+.acciones_tarea{
+    display: flex;
+    gap: 10px;
+    margin-top: auto;
+}
+
+.btn_completar, .btn_eliminar{
+    flex: 1;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn_completar{
+    background-color: #4f6917;
+}
+
+.btn_completar:hover{
+    background-color: #3a4e10;
+}
+
+.btn_eliminar{
+    background-color: #b91c1c;
+}
+
+.btn_eliminar:hover{
+    background-color: #7f1313;
+}
+
+/* tarea completada (el JS le agrega esta clase a la tarjeta) */
+.completada{
+    opacity: 0.6;
+}
+
+.completada h3{
+    text-decoration: line-through;
 }
 
 /* pie de pagina */
