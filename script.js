@@ -40,6 +40,7 @@ function CrearTarea(){
     }
 
     tareas.push(NuevaTarea);
+    GuardarTareas();
     Form.reset();
     MostrarTareas();
 
@@ -117,13 +118,35 @@ function FinalizarTarea(id){
     const tarea = tareas.find(t => t.id === id);
     if(tarea){
         tarea.completada = !tarea.completada;
+        GuardarTareas();
         MostrarTareas();
     }
 }
 
 function EliminarTarea(id){
     tareas = tareas.filter(t => t.id !== id);
+    GuardarTareas();
     MostrarTareas();
+}
+
+// guarda el arreglo de tareas y el siguiente id en el localStorage
+function GuardarTareas(){
+    localStorage.setItem('tareas', JSON.stringify(tareas));
+    localStorage.setItem('nextid', nextid);
+}
+
+// carga las tareas guardadas cuando se abre la pagina
+function CargarTareas(){
+    const tareasGuardadas = localStorage.getItem('tareas');
+    const idGuardado = localStorage.getItem('nextid');
+
+    if(tareasGuardadas !== null){
+        tareas = JSON.parse(tareasGuardadas);
+    }
+
+    if(idGuardado !== null){
+        nextid = parseInt(idGuardado);
+    }
 }
 
 function Contador(){
@@ -138,4 +161,5 @@ function Contador(){
 
 Agregar.addEventListener('click', CrearTarea);
 
+CargarTareas();
 MostrarTareas();
