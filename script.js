@@ -16,6 +16,10 @@ const ContadorTotal = document.getElementById('contador_total');
 const ContadorPendientes = document.getElementById('contador_pendientes');
 const ContadorCompletadas = document.getElementById('contador_completadas');
 
+const Buscar = document.getElementById('buscar');
+const FiltroEstado = document.getElementById('filtro_estado');
+const FiltroPrioridad = document.getElementById('filtro_prioridad');
+
 function Validacion(){
     if(Titulo.value.trim() === '' || Fecha.value === '' || Priori.value === ''){
         Error.textContent = 'Entradas incompletas, favor de rellenar todos los campos. '
@@ -53,7 +57,7 @@ function CrearTarjeta(tarea){
     if (tarea.completada){
         tarjeta.classList.add('completada');
     }
-    tarjeta.classList.add(`prioridad-${tarea.Prioridad}`)
+    tarjeta.classList.add('prioridad-' + tarea.Prioridad)
 
     const titulo = document.createElement('h3');
     titulo.textContent = tarea.Titulo;
@@ -89,13 +93,17 @@ function CrearTarjeta(tarea){
     completada.type = 'button';
     completada.className = 'btn_completar';
     completada.textContent = tarea.completada ? 'Deshacer' : 'Finalizar tarea';
-    completada.addEventListener('click', () => FinalizarTarea(tarea.id));
+    completada.addEventListener('click', function(){
+        FinalizarTarea(tarea.id);
+    });
 
     const Eliminar = document.createElement('button');
     Eliminar.type = 'button';
     Eliminar.className = 'btn_eliminar';
     Eliminar.textContent = 'Eliminar';
-    Eliminar.addEventListener('click', () => EliminarTarea(tarea.id));
+    Eliminar.addEventListener('click', function(){
+        EliminarTarea(tarea.id);
+    });
 
     accion.appendChild(completada)
     accion.appendChild(Eliminar)
@@ -104,12 +112,42 @@ function CrearTarjeta(tarea){
     return tarjeta;
 }
 
+// revisa si una tarea cumple con la busqueda y los filtros seleccionados
+function CumpleFiltros(tarea){
+    const texto = Buscar.value.trim().toLowerCase();
+    const estado = FiltroEstado.value;
+    const prioridad = FiltroPrioridad.value;
+
+    // busqueda por titulo
+    if(texto !== '' && !tarea.Titulo.toLowerCase().includes(texto)){
+        return false;
+    }
+
+    // filtro por estado
+    if(estado === 'pendientes' && tarea.completada === true){
+        return false;
+    }
+    if(estado === 'completadas' && tarea.completada === false){
+        return false;
+    }
+
+    // filtro por prioridad
+    if(prioridad !== 'todas' && tarea.Prioridad !== prioridad){
+        return false;
+    }
+
+    return true;
+}
+
 function MostrarTareas(){
     ListaTareas.innerHTML = '';
 
-    tareas.forEach(tarea => {
-        ListaTareas.appendChild(CrearTarjeta(tarea));
-    });
+    // solo se muestran las tareas que cumplen con los filtros
+    for(let i = 0; i < tareas.length; i++){
+        if(CumpleFiltros(tareas[i])){
+            ListaTareas.appendChild(CrearTarjeta(tareas[i]));
+        }
+    }
 
     Contador();
 }
@@ -160,6 +198,11 @@ function Contador(){
 }
 
 Agregar.addEventListener('click', CrearTarea);
+
+// cada vez que se escribe en la busqueda o se cambia un filtro se vuelve a mostrar la lista
+Buscar.addEventListener('input', MostrarTareas);
+FiltroEstado.addEventListener('change', MostrarTareas);
+FiltroPrioridad.addEventListener('change', MostrarTareas);
 
 CargarTareas();
 MostrarTareas();
