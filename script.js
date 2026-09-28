@@ -20,6 +20,8 @@ const Buscar = document.getElementById('buscar');
 const FiltroEstado = document.getElementById('filtro_estado');
 const FiltroPrioridad = document.getElementById('filtro_prioridad');
 
+const BtnLimpiador = document.getElementById('btn_limpiador');
+
 function Validacion(){
     if(Titulo.value.trim() === '' || Fecha.value === '' || Priori.value === ''){
         Error.textContent = 'Entradas incompletas, favor de rellenar todos los campos. '
@@ -143,10 +145,22 @@ function MostrarTareas(){
     ListaTareas.innerHTML = '';
 
     // solo se muestran las tareas que cumplen con los filtros
+    let visibles = 0;
     for(let i = 0; i < tareas.length; i++){
         if(CumpleFiltros(tareas[i])){
             ListaTareas.appendChild(CrearTarjeta(tareas[i]));
+           /**/ visibles++;
         }
+    }
+
+    /**/
+    if(visibles === 0){
+        const msjVacio = document.createElement('p');
+        msjVacio.className = 'mensaje_vacio';
+        msjVacio.textContent = tareas.length === 0
+        ? 'No hay ninguna tarea capturada'
+        : 'No existe tarea con tal caracteristica'
+        ListaTareas.appendChild(msjVacio);
     }
 
     Contador();
@@ -163,6 +177,13 @@ function FinalizarTarea(id){
 
 function EliminarTarea(id){
     tareas = tareas.filter(t => t.id !== id);
+    GuardarTareas();
+    MostrarTareas();
+}
+
+/**/
+function Limpiador(){
+    tareas = tareas.filter(t => !t.completada);
     GuardarTareas();
     MostrarTareas();
 }
@@ -203,6 +224,10 @@ Agregar.addEventListener('click', CrearTarea);
 Buscar.addEventListener('input', MostrarTareas);
 FiltroEstado.addEventListener('change', MostrarTareas);
 FiltroPrioridad.addEventListener('change', MostrarTareas);
+
+if(BtnLimpiador){
+    BtnLimpiador.addEventListener('click', Limpiador)
+}
 
 CargarTareas();
 MostrarTareas();
