@@ -214,7 +214,7 @@ input:focus, textarea:focus, select:focus{
 }
 
 .prioridad-alta{
-    border-left: 6px solid #b91c1c;
+    border-left: 12px solid #b91c1c;
 }
 
 .prioridad-alta .prioridad_tarea{
@@ -222,7 +222,7 @@ input:focus, textarea:focus, select:focus{
 }
 
 .prioridad-media{
-    border-left: 6px solid #b45309;
+    border-left: 12px solid #b45309;
 }
 
 .prioridad-media .prioridad_tarea{
@@ -230,7 +230,7 @@ input:focus, textarea:focus, select:focus{
 }
 
 .prioridad-baja{
-    border-left: 6px solid #15803d;
+    border-left: 12px solid #15803d;
 }
 
 .prioridad-baja .prioridad_tarea{
@@ -263,6 +263,10 @@ input:focus, textarea:focus, select:focus{
 
 .btn_eliminar{
     background-color: #b91c1c;
+}
+
+.btn_tc{
+    margin-bottom: 20px;
 }
 
 .btn_eliminar:hover{
