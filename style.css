@@ -18,22 +18,19 @@ body{
     padding: 20px 8%;
     background-color: rgb(94, 75, 15);
     color: #fff;
-    /**/
     position: sticky;
     top: 0;
     z-index: 100;
-    /**/
-}
+    }
 
 .logo{
     display: flex;
     align-items: center;
-    gap: 12px;
 }
 
 .logo img{
     width: 50px;
-    height: 50px;
+    height: auto;
 }
 
 .navBar{
@@ -67,7 +64,6 @@ body{
     font-size: 28px;
 }
 
-/* presentacion */
 .presentacion p{
     line-height: 1.5;
     margin-bottom: 12px;
@@ -83,7 +79,7 @@ body{
 .contadores{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+    gap: 25px;
 }
 
 .contador{
@@ -131,10 +127,9 @@ form{
 input, textarea, select{
     padding: 10px 12px;
     border-radius: 6px;
-    border: 1px solid #d1d5db;
+    border: 1px solid #ccc;
     font-size: 15px;
     font-family: Arial, Helvetica, sans-serif;
-    outline: none;
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -143,8 +138,8 @@ input:focus, textarea:focus, select:focus{
     box-shadow: 0 0 0 3px rgba(94, 75, 15, 0.2);
 }
 
-.mensaje_error{
-    margin-bottom: 12px;
+#mensaje_error{
+    margin-bottom: 16px;
     color: #b91c1c;
     font-weight: bold;
 }
@@ -165,9 +160,6 @@ input:focus, textarea:focus, select:focus{
     background-color: rgb(63, 50, 10);
 }
 
-.btn:focus{
-    outline: 3px solid rgba(94, 75, 15, 0.4);
-}
 
 /* busqueda y filtros */
 .filtros{
@@ -193,7 +185,7 @@ input:focus, textarea:focus, select:focus{
     background-color: white;
     box-shadow: 0 5px 15px rgba(0,0,0,0.08);
     transition: transform 0.2s ease;
-    /**/position: relative;
+    position: relative;
 }
 
 .tarjeta_tarea:hover{
@@ -205,14 +197,11 @@ input:focus, textarea:focus, select:focus{
     color: #4b5563;
 }
 
-.fecha_tarea, .prioridad_tarea{
-    font-size: 14px;
-}
 
 .fecha_tarea span, .prioridad_tarea span{
     font-weight: bold;
 }
-/**/
+
 .prioridad_tarea{
     position: absolute;
     top: 16px;
@@ -247,8 +236,6 @@ input:focus, textarea:focus, select:focus{
 .prioridad-baja .prioridad_tarea{
     background-color: #15803d;
 }
-
-/**/
 
 .acciones_tarea{
     display: flex;
@@ -291,7 +278,6 @@ input:focus, textarea:focus, select:focus{
     text-decoration: line-through;
 }
 
-/* pie de pagina */
 .footer{
     display: flex;
     justify-content: center;
@@ -300,7 +286,6 @@ input:focus, textarea:focus, select:focus{
     color: white;
 }
 
-/*el media para los fones*/
 @media (max-width: 600px){
     .encabezado{
         flex-direction: column;
@@ -335,7 +320,6 @@ input:focus, textarea:focus, select:focus{
     }
     
 }
-/**/
 
 .mensaje_vacio{
     grid-column: 1/ -1;

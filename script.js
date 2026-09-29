@@ -1,5 +1,4 @@
 // Gestor de Tareas
-// la logica de la aplicacion se agrega en los siguientes pasos
 let tareas = []
 let nextid = 1;
 
@@ -55,7 +54,6 @@ function CrearTarea(){
 function CrearTarjeta(tarea){
     const tarjeta = document.createElement('article');
     tarjeta.className = 'tarjeta_tarea';
-    tarjeta.dataset.id = tarea.id;
     if (tarea.completada){
         tarjeta.classList.add('completada');
     }
@@ -149,11 +147,10 @@ function MostrarTareas(){
     for(let i = 0; i < tareas.length; i++){
         if(CumpleFiltros(tareas[i])){
             ListaTareas.appendChild(CrearTarjeta(tareas[i]));
-           /**/ visibles++;
+            visibles++;
         }
     }
 
-    /**/
     if(visibles === 0){
         const msjVacio = document.createElement('p');
         msjVacio.className = 'mensaje_vacio';
@@ -181,7 +178,6 @@ function EliminarTarea(id){
     MostrarTareas();
 }
 
-/**/
 function Limpiador(){
     tareas = tareas.filter(t => !t.completada);
     GuardarTareas();
@@ -225,9 +221,8 @@ Buscar.addEventListener('input', MostrarTareas);
 FiltroEstado.addEventListener('change', MostrarTareas);
 FiltroPrioridad.addEventListener('change', MostrarTareas);
 
-if(BtnLimpiador){
-    BtnLimpiador.addEventListener('click', Limpiador)
-}
+BtnLimpiador.addEventListener('click', Limpiador)
+
 
 CargarTareas();
 MostrarTareas();
