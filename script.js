@@ -7,7 +7,7 @@ const Titulo = document.getElementById('titulo');
 const Desc = document.getElementById('descripcion');
 const Fecha = document.getElementById('fecha');
 const Priori = document.getElementById('prioridad');
-const Error = document.getElementById('mensaje_error');
+const MsjError = document.getElementById('mensaje_error');
 const Agregar = document.getElementById('btn_agregar');
 const ListaTareas = document.getElementById('lista_tareas');
 
@@ -23,11 +23,10 @@ const BtnLimpiador = document.getElementById('btn_limpiador');
 
 function Validacion(){
     if(Titulo.value.trim() === '' || Fecha.value === '' || Priori.value === ''){
-        Error.textContent = 'Entradas incompletas, favor de rellenar todos los campos. '
-
+        MsjError.textContent = 'Entradas incompletas, favor de rellenar todos los campos. '
         return false;
     }
-    Error.textContent = '';
+    MsjError.textContent = '';
     return true;
 }
 

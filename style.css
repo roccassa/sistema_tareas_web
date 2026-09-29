@@ -208,9 +208,8 @@ input:focus, textarea:focus, select:focus{
     right: 16px;
     font-size: 12px;
     padding: 4px 10px;
-    border-radius: 999px;
+    border-radius: 99px;
     color: white;
-    background-color: #6b7280;
 }
 
 .prioridad-alta{
